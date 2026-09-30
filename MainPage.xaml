@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculatrice.MainPage"
+             BackgroundColor="#121212">
+
+    <Grid RowDefinitions="*, Auto" Padding="15">
+        <!-- Écran d'affichage -->
+        <VerticalStackLayout Grid.Row="0" VerticalOptions="End" Margin="0,0,0,15" Spacing="5">
+            <Label x:Name="ExpressionLabel"
+                   Text=""
+                   FontSize="22"
+                   TextColor="#888888"
+                   HorizontalOptions="End" />
+            <Label x:Name="ResultLabel"
+                   Text="0"
+                   FontSize="46"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="End" />
+        </VerticalStackLayout>
+
+        <!-- Grille des boutons -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,*,*,*,*"
+              RowDefinitions="*,*,*,*,*,*"
+              ColumnSpacing="8"
+              RowSpacing="8">
+
+            <!-- Ligne 0 : Modes & Annulations -->
+            <Button Grid.Row="0" Grid.Column="0" Text="DEG" x:Name="ModeBtn" Clicked="OnModeClicked" BackgroundColor="#2C2C2E" TextColor="#FF9F0A" FontSize="13" CornerRadius="10"/>
+            <Button Grid.Row="0" Grid.Column="1" Text="AC" Clicked="OnClearClicked" BackgroundColor="#A5A5A5" TextColor="Black" FontAttributes="Bold" CornerRadius="10"/>
+            <Button Grid.Row="0" Grid.Column="2" Text="⌫" Clicked="OnDeleteClicked" BackgroundColor="#A5A5A5" TextColor="Black" FontAttributes="Bold" CornerRadius="10"/>
+            <Button Grid.Row="0" Grid.Column="3" Text="(" Clicked="OnBtnClicked" BackgroundColor="#2C2C2E" TextColor="White" CornerRadius="10"/>
+            <Button Grid.Row="0" Grid.Column="4" Text=")" Clicked="OnBtnClicked" BackgroundColor="#2C2C2E" TextColor="White" CornerRadius="10"/>
+
+            <!-- Ligne 1 : Trigonométrie & Puissance -->
+            <Button Grid.Row="1" Grid.Column="0" Text="sin" Clicked="OnFunctionClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="cos" Clicked="OnFunctionClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="1" Grid.Column="2" Text="tan" Clicked="OnFunctionClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="1" Grid.Column="3" Text="√" Clicked="OnFunctionClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="1" Grid.Column="4" Text="^" Clicked="OnBtnClicked" BackgroundColor="#2C2C2E" TextColor="#FF9F0A" CornerRadius="10"/>
+
+            <!-- Ligne 2 : Logs & Division -->
+            <Button Grid.Row="2" Grid.Column="0" Text="ln" Clicked="OnFunctionClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="2" Grid.Column="1" Text="7" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="2" Grid.Column="2" Text="8" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="2" Grid.Column="3" Text="9" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="2" Grid.Column="4" Text="÷" Clicked="OnBtnClicked" BackgroundColor="#FF9F0A" TextColor="White" FontSize="22" CornerRadius="10"/>
+
+            <!-- Ligne 3 : Log10 & Multiplication -->
+            <Button Grid.Row="3" Grid.Column="0" Text="log" Clicked="OnFunctionClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="3" Grid.Column="1" Text="4" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="3" Grid.Column="2" Text="5" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="3" Grid.Column="3" Text="6" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="3" Grid.Column="4" Text="×" Clicked="OnBtnClicked" BackgroundColor="#FF9F0A" TextColor="White" FontSize="22" CornerRadius="10"/>
+
+            <!-- Ligne 4 : Constantes & Soustraction -->
+            <Button Grid.Row="4" Grid.Column="0" Text="π" Clicked="OnBtnClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="4" Grid.Column="1" Text="1" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="4" Grid.Column="2" Text="2" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="4" Grid.Column="3" Text="3" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="4" Grid.Column="4" Text="-" Clicked="OnBtnClicked" BackgroundColor="#FF9F0A" TextColor="White" FontSize="22" CornerRadius="10"/>
+
+            <!-- Ligne 5 : Egalité & Addition -->
+            <Button Grid.Row="5" Grid.Column="0" Text="e" Clicked="OnBtnClicked" BackgroundColor="#2C2C2E" TextColor="#30D158" CornerRadius="10"/>
+            <Button Grid.Row="5" Grid.Column="1" Text="0" Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="5" Grid.Column="2" Text="." Clicked="OnBtnClicked" BackgroundColor="#3A3A3C" TextColor="White" FontSize="20" CornerRadius="10"/>
+            <Button Grid.Row="5" Grid.Column="3" Text="=" Clicked="OnCalculateClicked" BackgroundColor="#FF9F0A" TextColor="White" FontSize="22" CornerRadius="10"/>
+            <Button Grid.Row="5" Grid.Column="4" Text="+" Clicked="OnBtnClicked" BackgroundColor="#FF9F0A" TextColor="White" FontSize="22" CornerRadius="10"/>
+
+        </Grid>
+    </Grid>
+</ContentPage>
